@@ -32,7 +32,7 @@
     href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Patrick+Hand&family=Shadows+Into+Light&display=swap"
     rel="stylesheet"
   />
-  <script type="module" crossorigin src="/assets/index-ClhvypBB.js"></script>
+  <script type="module" crossorigin src="/assets/index-jklbV904.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-_6KA67sQ.css">
 </head>
 <!-- Resto del código... -->
@@ -41,45 +41,60 @@
   <div id="root"></div>
 
 <script>
-  window.web = "Watt.report";
-  var initials = web.match(/\b\w/g)?.join("").slice(0, 2) || "A";
+  window.web = "Estudio Técnico Económico";
+
+  // Normalizar tildes y obtener iniciales
+  var cleanWeb = web.normalize("NFD").replace(/[\u0300-\u036f]/g, "");  
+  var initials = cleanWeb.match(/\b\w/g)?.join("").slice(0, 3).toUpperCase() || "A";
+
+  // Debería quedar E T E
+  console.log(initials);
+
   generateFavicon(initials);
-  document.title = web; // Asignar dinámicamente el título
+  document.title = web;
 
   function generateFavicon(initials) {
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
 
-    canvas.width = 66;
-    canvas.height = 66;
+    canvas.width = 55;
+    canvas.height = 55;
 
     // Fondo azul
     context.fillStyle = "darkblue";
     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Primera inicial (más grande, naranja)
-    if (initials[0]) {
-      context.font = "bold 60px sans-serif";
-      context.fillStyle = "orange";
+    // Posiciones para las 3 letras
+    const positions = [
+      canvas.width * 0.20,
+      canvas.width * 0.50,
+      canvas.width * 0.80
+    ];
+
+    // Colores para cada letra
+    const colors = ["orange", "white", "orange"];
+
+    // Dibujar las letras
+    for (let i = 0; i < initials.length; i++) {
+      context.font = "bold 48px sans-serif";
       context.textAlign = "center";
       context.textBaseline = "middle";
-      context.fillText(initials[0], canvas.width / 3, canvas.height / 2);
+      context.fillStyle = colors[i];
+      context.fillText(initials[i], positions[i], canvas.height / 2);
     }
 
-    // Segunda inicial (más pequeña, blanca)
-    if (initials[1]) {
-      context.font = "bold 60px sans-serif";
-      context.fillStyle = "white";
-      context.fillText(initials[1], canvas.width * 2 / 2.5, canvas.height / 2);
-    }
-
-    // Crear el favicon
+    // Crear favicon
     var link = document.createElement('link');
     link.rel = 'icon';
     link.href = canvas.toDataURL('image/png');
+
+    // Reemplazar previos
+    document.querySelectorAll("link[rel='icon']").forEach(e => e.remove());
     document.head.appendChild(link);
   }
 </script>
+
+
 
 
 </body>
