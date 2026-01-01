@@ -36,7 +36,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Patrick+Hand&family=Shadows+Into+Light&display=swap"
     rel="stylesheet" />
-  <script type="module" crossorigin src="/assets/index-CJpx_EHC.js"></script>
+  <script type="module" crossorigin src="/assets/index-3bxn-yCJ.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-_6KA67sQ.css">
 </head>
 <!-- Resto del código... -->
@@ -44,82 +44,84 @@
 <body>
   <div id="root"></div>
 
-  <script>
-    window.web = "Estudio Técnico Económico";
+<script>
+  window.web = "Estudio Técnico Económico";
 
-    // Normalizar tildes y obtener iniciales
-    var cleanWeb = web.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    var initials = cleanWeb.match(/\b\w/g)?.join("").slice(0, 3).toUpperCase() || "A";
+  // Normalizar tildes y obtener iniciales
+  var cleanWeb = web.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  var initials = cleanWeb.match(/\b\w/g)?.join("").slice(0, 3).toUpperCase() || "A";
 
-    // Debería quedar E T E
-    console.log(initials);
+  // Debería quedar E T E
+  console.log(initials);
 
-    generateFavicon(initials);
-    document.title = web;
+  generateFavicon(initials);
+  document.title = web;
 
-    function generateFavicon(initials) {
-      var canvas = document.createElement('canvas');
-      var context = canvas.getContext('2d');
+  function generateFavicon(initials) {
+    var canvas = document.createElement('canvas');
+    var context = canvas.getContext('2d');
 
-      canvas.width = 55;
-      canvas.height = 50;
+    canvas.width = 55;
+    canvas.height = 50;
 
-      // Fondo azul
-      context.fillStyle = "darkblue";
-      context.fillRect(0, 0, canvas.width, canvas.height);
+    // Fondo azul
+    context.fillStyle = "darkblue";
+    context.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Posiciones de las letras
-      const positions = [
-        canvas.width * 0.20, // E izquierda
-        canvas.width * 0.50, // T central
-        canvas.width * 0.80  // E derecha
-      ];
+    // Colores iguales al theme
+    const warningColor = "#ed6c02"; // warning.main (MUI)
+    const textColors = [warningColor, "white", warningColor];
 
-      const colors = ["orange", "white", "orange"];
+    // Posiciones de las letras
+    const positions = [
+      canvas.width * 0.20, // E izquierda
+      canvas.width * 0.50, // T central
+      canvas.width * 0.80  // E derecha
+    ];
 
-      // 1️⃣ Dibujar E izquierda
-      context.save();
-      context.translate(positions[0], canvas.height / 2);
-      context.scale(1, 1.4); // estirar vertical
-      context.font = "bold 48px sans-serif";
-      context.textAlign = "center";
-      context.textBaseline = "middle";
-      context.fillStyle = colors[0];
-      context.fillText(initials[0], 0, 0);
-      context.restore();
+    // 1️⃣ E izquierda
+    context.save();
+    context.translate(positions[0], canvas.height / 2);
+    context.scale(1, 1.4);
+    context.font = "bold 48px sans-serif";
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.fillStyle = textColors[0];
+    context.fillText(initials[0], 0, 0);
+    context.restore();
 
-      // 2️⃣ Dibujar E derecha volteada
-      context.save();
-      context.translate(positions[2], canvas.height / 2);
-      context.scale(-1, 1.4); // volteo horizontal + estirado vertical
-      context.font = "bold 48px sans-serif";
-      context.textAlign = "center";
-      context.textBaseline = "middle";
-      context.fillStyle = colors[2];
-      context.fillText(initials[2], 0, 0);
-      context.restore();
+    // 2️⃣ E derecha volteada
+    context.save();
+    context.translate(positions[2], canvas.height / 2);
+    context.scale(-1, 1.4);
+    context.font = "bold 48px sans-serif";
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.fillStyle = textColors[2];
+    context.fillText(initials[2], 0, 0);
+    context.restore();
 
-      // 3️⃣ Dibujar T central **después** para que quede encima
-      context.save();
-      context.translate(positions[1], canvas.height / 2);
-      context.scale(1, 1.4);
-      context.font = "bold 48px sans-serif";
-      context.textAlign = "center";
-      context.textBaseline = "middle";
-      context.fillStyle = colors[1];
-      context.fillText(initials[1], 0, 0);
-      context.restore();
+    // 3️⃣ T central (encima)
+    context.save();
+    context.translate(positions[1], canvas.height / 2);
+    context.scale(1, 1.4);
+    context.font = "bold 48px sans-serif";
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.fillStyle = textColors[1];
+    context.fillText(initials[1], 0, 0);
+    context.restore();
 
-      // Crear favicon
-      var link = document.createElement('link');
-      link.rel = 'icon';
-      link.href = canvas.toDataURL('image/png');
+    // Crear favicon
+    var link = document.createElement('link');
+    link.rel = 'icon';
+    link.href = canvas.toDataURL('image/png');
 
-      // Reemplazar previos
-      document.querySelectorAll("link[rel='icon']").forEach(e => e.remove());
-      document.head.appendChild(link);
-    }
-  </script>
+    document.querySelectorAll("link[rel='icon']").forEach(e => e.remove());
+    document.head.appendChild(link);
+  }
+</script>
+
 
 
 
