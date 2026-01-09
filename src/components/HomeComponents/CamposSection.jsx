@@ -21,7 +21,7 @@ const features = [
   },
   {
     icon: <EvStationIcon sx={{ fontSize: 50, color: "#1976d2" }} />,
-    title: "Cargadores de Coches Eléctricos",
+    title: "Cargadores para Vehículos Eléctricos",
     description:
       "Informes sobre instalación y optimización de puntos de recarga para vehículos eléctricos.",
   },

@@ -62,7 +62,7 @@ const ProcessSection = () => {
     >
       <Container maxWidth="lg">
         <Typography variant="h2" align="center" className="process-title">
-          Su estudio en solo 4 pasos
+          Obtén tu informe en solo 4 pasos
         </Typography>
 
         <Grid container spacing={4}>

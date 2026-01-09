@@ -114,13 +114,15 @@ te damos asesoría personalizada y te ofrecemos soluciones profesionales pensada
           },
         }}
       >
-        Genera informes dinámicos: Elige una plantilla, cambiale los parámetros y el sistema recalcula todo por ti.
+        Plantillas inteligentes que se adaptan a ti.
+        {/* Genera informes dinámicos: Elige una plantilla, cambiale los parámetros y el sistema recalcula todo por ti. */}
         {/* Plataforma para personalizar informes técnico-económicos a partir de plantillas. */}
       </Typography>
 
       <Grid container spacing={4} justifyContent="center" alignItems="stretch">
         {features.map((feature, index) => (
-          <Grid key={index} item xs={12} md={6} lg={4}>
+          <Grid k
+          ey={index} item xs={12} md={6} lg={4}>
             <Card
               sx={{
                 display: "flex",
